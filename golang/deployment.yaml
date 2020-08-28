@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-exercicio-golang
+  
+spec:
+  selector:
+    matchLabels:
+      app: k8s-exercicio-golang
+  replicas: 1
+  template:
+    metadata: 
+      labels: 
+        app: k8s-exercicio-golang
+  
+    spec:
+      containers:
+      - name: nginx
+        image: biliano/k8s-golang:latest
+        ports:
+        - containerPort: 9000
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "200m"
+          limits:
+            memory: "200Mi"
+            cpu: "250m"
