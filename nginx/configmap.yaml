@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: k8s-exercicio-nginx-configmap
+data:
+  nginx.conf: |
+
+    server{
+      listen 80;
+      index index.php index.html;
+      root /usr/share/nginx/html;
+
+      rewrite ^/google$ http://google.com permanent;
+    }
+    
+  index.html: |
+
+    <html>
+      <head></head>
+      <body>
+          <h1>Code.education Rocks!!!!!</h1>
+      </body>
+    </html>
